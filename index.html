@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> 
+    <title>Web</title>
+</head>
+<style>
+    *, body, html{
+        margin:0;
+        padding:0;
+    }
+    .navbar{
+        border:1px solid;
+        display:flex;
+        justify-content:space-between;
+        align-items:center;
+        padding:20px;
+        background-color:#bf80ff;
+    }
+    .dashboard{
+        font-family:Verdana, Geneva, Tahoma, sans-serif;
+        color:white;
+        font-size:28px;
+    }
+    .title{
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:24px;
+        color:#ffffff;
+    }
+    .container{
+        /* border:1px solid; */
+        max-width:100%;
+        height:auto;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        gap:50px;
+        background-image:url('https://th.bing.com/th/id/OIP.lUjPA535fQlXkWuQqR96vwHaFj?w=262&h=196&c=7&r=0&o=5&dpr=1.3&pid=1.7');
+        background-repeat:no-repeat;
+        background-position:center;
+        background-size:cover;
+    }
+    .control{
+        display:flex;
+        flex-direction:column;
+        justify-content:center;
+        align-items:center;
+        width:40%;
+        /* border:1px solid; */
+    }
+    .card1{
+        width:200px;
+        height:100px;
+        display:flex;
+        flex-direction:column;
+        justify-content:center;
+        align-items:center;
+        border:none;
+        border-radius:10px;
+        /* background-color:#1a75ff; */
+        box-shadow:2px 2px 3px 2px;
+        padding:5px;
+        margin-bottom:30px;
+        margin-top:30px;
+        background-color:whitesmoke;
+        opacity:0.8;
+    }
+    .card2{
+        width:200px;
+        height:100px;
+        display:flex;
+        flex-direction:column;
+        justify-content:center;
+        align-items:center;
+        border:none;
+        border-radius:10px;
+        /* background-color:#1a75ff; */
+        box-shadow:2px 2px 3px 2px;
+        padding:5px;
+        margin-bottom:30px;
+        background-color:whitesmoke;
+        opacity:0.8;
+    }
+    .card3{
+        width:200px;
+        height:100px;
+        display:flex;
+        flex-direction:column;
+        justify-content:center;
+        align-items:center;
+        border:none;
+        border-radius:10px;
+        /* background-color:#1a75ff; */
+        box-shadow:2px 2px 3px 2px;
+        padding:5px;
+        margin-bottom:30px;
+        background-color:whitesmoke;
+        opacity:0.8;
+    }
+    .card4{
+        width:200px;
+        height:100px;
+        display:flex;
+        flex-direction:column;
+        justify-content:center;
+        align-items:center;
+        border:none;
+        border-radius:10px;
+        /* background-color:#1a75ff; */
+        box-shadow:2px 2px 3px 2px;
+        padding:5px;
+        margin-bottom:30px;
+        background-color:whitesmoke;
+        opacity:0.8;
+    }
+    .btn-name{
+        font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        font-size:18px;
+        font-weight:bold;
+    }
+    hr{
+        width:100%;
+        margin:2px 0px 6px 0px;
+    }
+    .card-body{
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        gap:20px;
+    }
+    .on{
+        width:70px;
+        height:70px;
+        font-family:fantasy, sans-serif;
+        font-size:24px;
+        color:#626161;
+        background-color: #39ac39;
+        border-radius:20px;
+        border:none;
+    }
+    .on:hover{
+        background-color:#007800;
+        color:#ffffff;
+        cursor:pointer;
+    }
+    .off{
+        width:70px;
+        height:70px;
+        font-family:fantasy, sans-serif;
+        font-size:24px;
+        color:#626161;
+        background-color: #ef1919;
+        border-radius:20px;
+        border:none;
+    }
+    .off:hover{
+        background-color:#b90000;
+        color:#ffffff;
+        cursor:pointer;
+    }
+    
+    .monitor{
+        /* border:1px solid; */
+        display:flex;
+        flex-direction:column;
+        justify-content:center;
+        width:70%;
+        height:auto;
+        padding:20px;
+    }
+    .chart1{
+        /* width:100%; */
+        /* height:auto; */
+        border-radius:10px;
+        box-shadow:2px 2px 3px 2px;
+        padding:10px;
+        margin-bottom:20px;
+        margin-top:20px;
+        width:700px;
+        background-color:whitesmoke;
+        opacity:0.8;
+    }
+    .chart2{
+        /* width:100%; */
+        /* height:auto; */
+        border-radius:10px;
+        box-shadow:2px 2px 3px 2px;
+        padding:10px;
+        margin-bottom:20px;
+        margin-top:20px;
+        width:700px;
+        background-color:whitesmoke;
+        opacity:0.8;
+    }
+    canvas{
+        width:100%;
+        max-width:700px;
+        height:auto;
+    }
+</style>
+<body>
+    <nav class="navbar">
+        <h1 class="dashboard">Dashboard</h1>
+        <h1 class="title">Sistem Monitoring Tanaman Anggrek</h1>
+    </nav>
+    <div class="container">
+        <div class="control">
+            <div class="card1">
+                <p class="btn-name">Pompa Air</p>
+                <hr>
+                <div class="card-body">
+                    <button class="on">ON</button>
+                    <button class="off">OFF</button>
+                </div>
+            </div>
+            <div class="card2">
+                <p class="btn-name">Pompa Air</p>
+                <hr>
+                <div class="card-body">
+                    <button class="on">ON</button>
+                    <button class="off">OFF</button>
+                </div>
+            </div>
+            <div class="card3">
+                <p class="btn-name">Pompa Air</p>
+                <hr>
+                <div class="card-body">
+                    <button class="on">ON</button>
+                    <button class="off">OFF</button>
+                </div>
+            </div>
+            <div class="card4">
+                <p class="btn-name">Pompa Air</p>
+                <hr>
+                <div class="card-body">
+                    <button class="on">ON</button>
+                    <button class="off">OFF</button>
+                </div>
+            </div>
+        </div>
+        <div class="monitor">
+            <div class="chart1">
+            <canvas id="humidityChart"></canvas>
+            </div>
+            <div class="chart2">
+            <canvas id="temperatureChart"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <!-- import chart-js  -->
+    <script>
+        var humidityChartCtx = document.getElementById('humidityChart').getContext('2d');
+        var temperatureChartCtx = document.getElementById('temperatureChart').getContext('2d');
+        var humidityChart = new Chart(humidityChartCtx, {
+        type: 'line',
+        data: {
+            labels: [1, 2, 3, 4, 5],
+            datasets: [{
+            label: 'Humidity (%)',
+            data: [10, 20, 10, 15, 20],
+            borderColor: 'rgba(255, 99, 132, 1)',
+            borderWidth: 1
+            }]
+        }
+        });
+        var temperatureChart = new Chart(temperatureChartCtx, {
+        type: 'line',
+        data: {
+            labels: [1, 2, 3, 4, 5],
+            datasets: [{
+            label: 'Temperature (°C)',
+            data: [10, 20, 10, 15, 20],
+            borderColor: 'rgba(255, 99, 132, 1)',
+            borderWidth: 1
+            }]
+        }
+        });
+
+    </script>
+</body>
+</html>
